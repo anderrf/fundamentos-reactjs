@@ -4,6 +4,37 @@ import './global.css'
 import styles from './App.module.css'
 import { Sidebar } from './components/Sidebar'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/anderrf.png',
+      name: 'Anderson Farias',
+      role: 'Web Developer'
+    },
+    content: [
+      {type: 'paragraph', content: 'Olá!'},
+      {type: 'paragraph', content: 'Segue abaixo artigo sobre iteração'},
+      {type: 'link', content: 'https://github.com/anderrf'},
+    ],
+    publishedAt: new Date("2024-06-01T12:00:00")
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/anderrf.png',
+      name: 'Anderson Rocha',
+      role: 'Fullstack Developer'
+    },
+    content: [
+      {type: 'paragraph', content: 'Olá!'},
+      {type: 'paragraph', content: 'Segue abaixo artigo sobre iteração'},
+      {type: 'link', content: 'https://github.com/anderrf'},
+    ],
+    publishedAt: new Date("2024-06-03T15:00:00")
+  },
+]
+
 export function App() {
 
   return (
@@ -14,8 +45,18 @@ export function App() {
           <Sidebar/>
         </aside>
         <main>
-        <Post author="Anderson Farias" content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, laboriosam deserunt? Magni ipsam excepturi atque ducimus amet nulla quidem provident."/>
-        <Post author="Angelo Marques" content="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam, laboriosam deserunt? "/>
+          {
+            posts.map(post => {
+              return (
+                <Post 
+                  key={post.id}
+                  author={post.author}
+                  content={post.content}
+                  publishedAt={post.publishedAt}
+                />
+              )
+            })
+          }
         </main>
       </div>
     </div>
