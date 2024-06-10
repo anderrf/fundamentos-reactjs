@@ -6,7 +6,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import { useState } from 'react'
 
 
-export function Post({author, publishedAt, content}){
+export function Post({author, publishedAt, content}){    
     const [comments, setComments] = useState([])
 
     const [newCommentText, setNewCommentText] = useState('')
@@ -14,6 +14,7 @@ export function Post({author, publishedAt, content}){
     const publishedDateFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
     })
+
     const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
         locale: ptBR,
         addSuffix: true
